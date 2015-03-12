@@ -17,7 +17,7 @@
     <div id="table"></div>
     <script>
       MP.api.ready(function() {
-        var eventSelect = 'create_account';
+        var eventSelect = $('#eventSelect').MPEventSelect();
         var propSelect  = $('#propSelect').MPPropertySelect();
         var dateSelect  = $('#dateSelect').MPDatepicker();
         var eventGraph  = $('#graph').MPChart({chartType: 'line'});
@@ -33,6 +33,9 @@
 
           if (eventName) {
             MP.api.segment(eventName, propName, dateRange).done(function(results) {
+              
+              console.log(results);
+              
               eventGraph.MPChart('setData', results);
               eventTable.MPTable('setData', results);
             });
